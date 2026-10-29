@@ -94,6 +94,21 @@ The proposed detector achieved slightly higher precision and lower false-positiv
 
 These results suggest that drift compensation can reduce false alarms, although it does not consistently improve all detection metrics.
 
+### Statistical Significance
+
+A paired statistical comparison was performed between the proposed directional detector and rolling k-sigma using the held-out experimental seeds in the ablation study.
+
+For false-positive rate, the comparison produced:
+
+- Paired t-test: p = 0.0035
+- Wilcoxon signed-rank test: p = 0.0116
+
+Both tests indicated a statistically significant difference in false-positive rate at the 0.05 significance level.
+
+The corresponding F1-score comparison did not show a statistically significant difference.
+
+These findings support a reduction in false-positive rate under the evaluated synthetic conditions, without establishing an overall improvement in anomaly detection performance.
+
 ## Real-World Evaluation
 
 The proposed method was also evaluated using the `machine_temperature_system_failure` sensor series from the Numenta Anomaly Benchmark (NAB).
@@ -190,15 +205,67 @@ The generated outputs are stored under `results/`.
 
 For additional experiment details, refer to `EXPERIMENTS.md`.
 
-## Dataset Information
+## Dataset Availability
 
-Synthetic sensor streams are generated programmatically and can be recreated using the provided implementation.
+This research uses synthetic sensor data generated programmatically and a publicly available real-world dataset from the Numenta Anomaly Benchmark (NAB).
 
-The real-world evaluation uses the machine-temperature sensor series from the [Numenta Anomaly Benchmark](https://github.com/numenta/NAB).
+### Synthetic Data
 
-The original NAB input dataset is not included in this repository. Users should obtain the data and corresponding anomaly-window labels from the original source.
+Synthetic sensor streams are generated using the Python implementation in this repository. The experiments use fixed random seeds and documented parameters to support reproducibility.
 
-The real-data evaluation scripts are available under `experiments/`.
+The generated datasets are not stored separately because they can be recreated using the supplied code.
+
+### Real-World Data
+
+The real-world evaluation uses the `machine_temperature_system_failure.csv` dataset from the Numenta Anomaly Benchmark (NAB).
+
+Original data and anomaly labels are available from the official NAB repository:
+
+- NAB repository: https://github.com/numenta/NAB
+- Sensor data: https://github.com/numenta/NAB/blob/master/data/realKnownCause/machine_temperature_system_failure.csv
+- Anomaly-window labels: https://github.com/numenta/NAB/blob/master/labels/combined_windows.json
+
+### Reproducing the Real-World Evaluation
+
+Download the following files from the official NAB repository:
+
+1. `machine_temperature_system_failure.csv`
+2. `combined_windows.json`
+
+Place both files inside the `data/real/` directory:
+
+```text
+data/
+└── real/
+    ├── machine_temperature_system_failure.csv
+    └── combined_windows.json
+```
+
+From the repository root, run:
+
+```bash
+python experiments/nab_window_evaluation.py
+```
+
+This experiment evaluates rolling k-sigma and the proposed directional detector using the NAB machine-temperature series and its published anomaly windows.
+
+The resulting evaluation tables and visualizations are saved under `results/real_data/`.
+
+The evaluation uses an exploratory window-based procedure rather than the official NAB scoring algorithm.
+
+The real-world evaluation uses 22,695 timestamped sensor observations and four labeled anomaly windows.
+
+The original NAB data is not redistributed in this repository. Researchers can obtain the dataset and labels from the official source.
+
+### Experimental Outputs
+
+The repository provides saved experimental results and visualizations under:
+
+- `results/tables/`
+- `results/figures/`
+- `results/real_data/`
+
+The real-data evaluation uses an exploratory window-based evaluation rather than the official NAB scoring procedure.
 
 ## Repository Contents
 
