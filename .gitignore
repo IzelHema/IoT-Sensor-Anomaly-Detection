@@ -1,0 +1,29 @@
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# IDE and system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated synthetic datasets
+data/synthetic/
+
+# Third-party NAB datasets
+data/real/*.csv
+data/real/*.json
+
+# Compressed archives
+*.zip
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example

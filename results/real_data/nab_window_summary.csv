@@ -1,0 +1,3 @@
+method,total_flags,point_precision_window_labels,point_recall_window_labels,point_f1_window_labels,point_fpr_outside_windows,false_positive_points_outside_windows,detected_windows,total_windows,window_event_recall,mean_latency_samples_detected_windows,median_latency_samples_detected_windows
+Rolling_kSigma,636,0.14465408805031446,0.04056437389770723,0.06336088154269973,0.02663141920007833,544,4,4,1.0,195.25,111.0
+Proposed_Directional,593,0.15008431703204048,0.039241622574955906,0.06221600838867528,0.024673226611837275,504,4,4,1.0,195.25,111.0

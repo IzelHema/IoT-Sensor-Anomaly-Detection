@@ -1,0 +1,32 @@
+{
+  "calibration": 500,
+  "short_window": 50,
+  "long_window": 500,
+  "k": 3.0,
+  "beta": 0.25,
+  "drift_gate": 0.75,
+  "confirm_samples": 8,
+  "test_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "series_length": 6000
+}
